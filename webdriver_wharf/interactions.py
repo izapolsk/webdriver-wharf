@@ -136,8 +136,8 @@ def running(*containers_to_filter):
 def check_selenium(container):
     try:
         status = requests.get(
-            "http://localhost:%d/wd/hub" % container.webdriver_port
-        ).status_code
+            "http://localhost:%d/wd/hub" % container.webdriver_port,
+            allow_redirects=False).status_code
         if 200 <= status < 400:
             return True
         else:
